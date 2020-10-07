@@ -23,6 +23,8 @@ import LanguageList from './practice/LanguageList';
 import JokeModal from "./practice/JokeModal";
 import Counter from './practice/Counter';
 import DisplayEvent from './DisplayEvent';
+import AddProfile from './practice/AddProfile';
+
 
 /** Components Continued */
 
@@ -110,6 +112,14 @@ let luis = new Intern(
   "Intern (FrontEnd Web)",
   "https://i.pinimg.com/600x315/88/5b/7b/885b7b783181234c51ea17ec48a02506.jpg",
   new Date("8/30/20")
+);
+
+let crissy = new Intern(
+  "Crissy",
+  "My dog's name is Bagel.",
+  "Intern (Development)",
+  "https://i.pinimg.com/474x/7a/c0/0b/7ac00bf8978dcd41116568cfbb3b6186.jpg",
+  new Date("10/6/20")
 );
 
 const items = [
@@ -211,6 +221,12 @@ const Playground = (props) => {
   const [show, setShow] = useState(false);
   const[showJoke, setJoke]=useState(false);
 
+  const newProfile = {
+    name:null,
+    title:null,
+    description: null
+  }
+
   
 
   return (
@@ -238,6 +254,10 @@ const Playground = (props) => {
             <Col><div>Login Component</div></Col>
           </Row>
         </Container>
+        
+        {/* Crissys component */}
+        <AddProfile newProfile={newProfile}></AddProfile>
+
         <Container>
           
          <DisplayPost post={postData} profile={amonteProfile}/>
@@ -370,6 +390,19 @@ const Playground = (props) => {
                 value={showJoke}
                 hide={()=>setJoke(false)}/>
                 <div>Programming Joke: What is a ghost's favorite type?</div>
+              </InternInfoDisplay>
+            </Col>
+
+            <Col className="my-3">
+              <InternInfoDisplay
+                intern={crissy}
+                onClick={() => {
+                  let content = "This was also logged to the console";
+                  console.log(content);
+                  alert(content);
+                }}
+              >
+                <div>Hey everyone</div>
               </InternInfoDisplay>
             </Col>
 
